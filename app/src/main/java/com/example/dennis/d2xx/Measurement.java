@@ -31,6 +31,7 @@ public class Measurement {
         this.bmp180Pressure = Double.parseDouble(parsedValues[6].trim());
 
         this.medianTemperature = (this.lm73Temperature + this.bmp180Temperature + this.sht21Temperature) / 3;
+
     }
 
     public int getId() {
