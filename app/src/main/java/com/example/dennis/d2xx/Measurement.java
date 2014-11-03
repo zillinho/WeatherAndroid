@@ -1,5 +1,7 @@
 package com.example.dennis.d2xx;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 /**
  * Created by Dennis on 01.11.2014.
  */
@@ -10,7 +12,9 @@ public class Measurement {
     private double lm73Temperature;
     private double bmp180Temperature;
     private double bmp180Pressure;
-    private  double medianTemperature;
+    private double medianTemperature;
+
+    private boolean errorParsingNumbers;
 
     public Measurement(int id, double sht21Temperature, double sht21Humidity, double lm73Temperature,
                        double bmp180Temperature, double bmp180Pressure) {
@@ -22,13 +26,49 @@ public class Measurement {
         this.bmp180Pressure = bmp180Pressure;
     }
 
+    /**
+     *
+     * @param parsedValues
+     * @throws NumberFormatException
+     */
     public Measurement(String[] parsedValues) throws NumberFormatException{
-        this.id = Integer.parseInt(parsedValues[0].trim());
-        this.sht21Temperature = Double.parseDouble(parsedValues[1].trim());
-        this.sht21Humidity = Double.parseDouble(parsedValues[2].trim());
-        this.lm73Temperature = Double.parseDouble(parsedValues[3].trim() + "." + parsedValues[4].trim());
-        this.bmp180Temperature = Double.parseDouble(parsedValues[5].trim());
-        this.bmp180Pressure = Double.parseDouble(parsedValues[6].trim());
+        errorParsingNumbers = false;
+        if (NumberUtils.isNumber(parsedValues[0].trim())) {
+            this.id = Integer.parseInt(parsedValues[0].trim());
+        } else {
+            this.id = -9999;
+            errorParsingNumbers = true;
+        }
+        if (NumberUtils.isNumber(parsedValues[1].trim())) {
+            this.sht21Temperature = Double.parseDouble(parsedValues[1].trim());
+        } else {
+            this.sht21Temperature = -9999;
+        }
+        if (NumberUtils.isNumber(parsedValues[2].trim())) {
+            this.sht21Humidity = Double.parseDouble(parsedValues[2].trim());
+        } else {
+            this.sht21Humidity = -9999;
+            errorParsingNumbers = true;
+        }
+        if (NumberUtils.isNumber(parsedValues[3].trim()) && NumberUtils.isNumber(parsedValues[4].trim())) {
+            this.lm73Temperature = Double.parseDouble(parsedValues[3].trim() + "." + parsedValues[4].trim());
+        }
+        else {
+            this.lm73Temperature = -9999;
+            errorParsingNumbers = true;
+        }
+        if (NumberUtils.isNumber(parsedValues[5].trim())) {
+            this.bmp180Temperature = Double.parseDouble(parsedValues[5].trim());
+        } else {
+            this.bmp180Temperature = -9999;
+            errorParsingNumbers = true;
+        }
+        if (NumberUtils.isNumber(parsedValues[6].trim())) {
+            this.bmp180Pressure = Double.parseDouble(parsedValues[6].trim());
+        } else {
+            this.bmp180Pressure = -9999;
+            errorParsingNumbers = true;
+        }
 
         this.medianTemperature = (this.lm73Temperature + this.bmp180Temperature + this.sht21Temperature) / 3;
 
@@ -88,5 +128,9 @@ public class Measurement {
 
     public void setMedianTemperature(double medianTemperature) {
         this.medianTemperature = medianTemperature;
+    }
+
+    public boolean isErrorParsingNumbers() {
+        return errorParsingNumbers;
     }
 }
