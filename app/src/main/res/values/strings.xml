@@ -4,5 +4,7 @@
     <string name="app_name">d2xx</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="TemperatureLabel">Temperature: </string>
+    <string name="ValueNotAvailable">n/a</string>
 
 </resources>

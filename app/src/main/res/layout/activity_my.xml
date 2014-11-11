@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,17 +6,48 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".MyActivity">
 
-    <ScrollView
+    <!--<ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/scrollView">
         <TextView
             android:id="@+id/txtRead"
             android:text="@string/hello_world"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </ScrollView>
+    </ScrollView>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/txtStation1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wetterstation 1 "
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/txtTemperature1Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/TemperatureLabel"
+            android:textSize="16dp"
+            android:layout_below="@+id/txtStation1"/>
+        <TextView
+            android:id="@+id/txtTemperature1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:layout_toRightOf="@+id/txtTemperature1Label"
+            android:layout_below="@+id/txtStation1"
+            android:text="@string/ValueNotAvailable"
+            android:textSize="16dp"/>
+        </RelativeLayout>
+
+
+</LinearLayout>

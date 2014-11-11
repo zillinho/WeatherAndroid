@@ -154,6 +154,9 @@ public class MyActivity extends Activity {
         txt.append("BMP180 Pressure: " + m.getBmp180Pressure() + "\n");
         txt.append(String.format("Median Temperature: %.2f \n", m.getMedianTemperature()));
         txt.append("\n");
+
+        TextView temp1 = (TextView) findViewById(R.id.txtTemperature1);
+        temp1.setText(Double.toString(m.getMedianTemperature()));
     }
 
     private void changeScreenBrightness(int value) {
