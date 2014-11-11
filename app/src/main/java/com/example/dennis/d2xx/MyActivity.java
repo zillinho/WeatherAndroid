@@ -42,8 +42,8 @@ public class MyActivity extends Activity {
 
 
                 if (ftDev.isOpen()) {
-                    TextView txt = (TextView) findViewById(R.id.txtRead);
-                    txt.append("\nftDev is Open\n");
+                    //TextView txt = (TextView) findViewById(R.id.txtRead);
+                    //txt.append("\nftDev is Open\n");
 
                     ftDev.setBitMode((byte) 0, D2xxManager.FT_BITMODE_RESET);
 
@@ -57,15 +57,15 @@ public class MyActivity extends Activity {
 
                     ftDev.setFlowControl(D2xxManager.FT_FLOW_RTS_CTS, XON, XOFF);
 
-                    txt.append("\nftDev configured\n");
+                    //txt.append("\nftDev configured\n");
 
                     ReadThread rt = new ReadThread(handler);
                     rt.start();
 
                 }
                 else {
-                    TextView txt = (TextView) findViewById(R.id.txtRead);
-                    txt.append("ftDev not Open");
+                    //TextView txt = (TextView) findViewById(R.id.txtRead);
+                    //txt.append("ftDev not Open");
                 }
 
             }
@@ -101,8 +101,8 @@ public class MyActivity extends Activity {
             switch (msg.what)
             {
                 case 1:
-                    TextView txt = (TextView) findViewById(R.id.txtRead);
-                    ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
+                    //TextView txt = (TextView) findViewById(R.id.txtRead);
+                    //ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
 
                     //////// Helligkeit regeln //////////////
                     /*if (bytesRead == 8) {
@@ -123,7 +123,7 @@ public class MyActivity extends Activity {
                         }
                     }*/
                     if (bytesRead > 0) {
-                        txt.append(Integer.toString(bytesRead) + " Bytes read\n");
+                        //txt.append(Integer.toString(bytesRead) + " Bytes read\n");
                         try {
                             String receivedBytes = new String(readBuffer);
                             String[] parsedValues = receivedBytes.split(";");
@@ -131,10 +131,12 @@ public class MyActivity extends Activity {
                             //int v = Integer.parseInt(parsedValues[0].trim());
                             //txt.append(parsedValues[3].trim() +  "." + parsedValues[4].trim() + "\n");
                             //double lm73 = Double.parseDouble(parsedValues[3].trim() + "." + parsedValues[4].trim());
-                            Measurement m = new Measurement(parsedValues);
-                            printMeasurement(m);
 
-                            scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                            Measurement m = new Measurement(parsedValues);
+                            if (!m.isErrorParsingNumbers())
+                                printMeasurement(m);
+
+                            //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
                         } finally {
                             readBuffer = new byte[8192];
@@ -145,7 +147,7 @@ public class MyActivity extends Activity {
     };
 
     private void printMeasurement(Measurement m) {
-        TextView txt = (TextView) findViewById(R.id.txtRead);
+        /*TextView txt = (TextView) findViewById(R.id.txtRead);
         txt.append("ID: " + m.getId() + "\n");
         txt.append("SHT21 Temperature: " + m.getSht21Temperature() + "\n");
         txt.append("SHT21 Humidity: " + m.getSht21Humidity() + "\n");
@@ -153,10 +155,18 @@ public class MyActivity extends Activity {
         txt.append("BMP180 Temperature: " + m.getBmp180Temperature() + "\n");
         txt.append("BMP180 Pressure: " + m.getBmp180Pressure() + "\n");
         txt.append(String.format("Median Temperature: %.2f \n", m.getMedianTemperature()));
-        txt.append("\n");
+        txt.append("\n");*/
 
-        TextView temp1 = (TextView) findViewById(R.id.txtTemperature1);
-        temp1.setText(Double.toString(m.getMedianTemperature()));
+        if (m.getId() == 1) {
+            TextView temp1 = (TextView) findViewById(R.id.txtTemperature1);
+            temp1.setText(String.format("%.2f", m.getMedianTemperature()));
+
+            TextView humidity1 = (TextView) findViewById(R.id.txtHumidity1);
+            humidity1.setText(String.format("%.2f", m.getSht21Humidity()));
+
+            TextView pressure1 = (TextView) findViewById(R.id.txtPressure1);
+            pressure1.setText(String.format("%.2f", m.getBmp180Pressure()));
+        }
     }
 
     private void changeScreenBrightness(int value) {

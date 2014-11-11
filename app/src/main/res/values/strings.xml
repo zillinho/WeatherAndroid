@@ -4,7 +4,12 @@
     <string name="app_name">d2xx</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="TemperatureLabel">Temperature: </string>
-    <string name="ValueNotAvailable">n/a</string>
+    <string name="temperature">Temperature: </string>
+    <string name="value_not_available">n/a</string>
+    <string name="humidity">Humidity:</string>
+    <string name="station_1">Wetterstation 1</string>
+    <string name="pressure">Pressure:</string>
+    <string name="station_2">Wetterstation 2</string>
+    <string name="station_3">Wetterstation 3</string>
 
 </resources>
