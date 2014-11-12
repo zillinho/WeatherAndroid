@@ -1,6 +1,8 @@
 package com.example.dennis.d2xx;
 
 import android.app.Activity;
+import android.database.DatabaseUtils;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +11,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ftdi.j2xx.D2xxManager;
 import com.ftdi.j2xx.FT_Device;
@@ -27,6 +30,8 @@ public class MyActivity extends Activity {
     int devCount = 0;
     int bytesRead = 0;
     byte[] readBuffer;
+
+    SqlLiteMeasurementHelper dbMeasurements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,8 +138,11 @@ public class MyActivity extends Activity {
                             //double lm73 = Double.parseDouble(parsedValues[3].trim() + "." + parsedValues[4].trim());
 
                             Measurement m = new Measurement(parsedValues);
-                            if (!m.isErrorParsingNumbers())
+                            if (!m.isErrorParsingNumbers()) {
                                 printMeasurement(m);
+                                InsertMeasurement im = new InsertMeasurement(m);
+                                im.execute();
+                            }
 
                             //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
@@ -146,6 +154,35 @@ public class MyActivity extends Activity {
         }
     };
 
+    /**
+     * Class which Asyncly handles the insertion of a Measurement into to the SQLite DB.
+     */
+    private class InsertMeasurement extends AsyncTask<Void, Void, Void> {
+        private Measurement measurement;
+        private long rows;
+
+        public InsertMeasurement(Measurement m) {
+            this.measurement = m;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            dbMeasurements = new SqlLiteMeasurementHelper(getApplicationContext());
+            dbMeasurements.insertMeasurement(measurement);
+            rows = dbMeasurements.countRows();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Toast.makeText(getApplicationContext(), Long.toString(rows), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Prints the Read values from one of the Enddevices
+     * @param m Holds the measured values
+     */
     private void printMeasurement(Measurement m) {
 
         if (m.getId() == 1) {
@@ -201,30 +238,6 @@ public class MyActivity extends Activity {
 
     }
 
-    class HandlerThread extends Thread {
-        Handler mHandler;
-
-        HandlerThread(Handler h)
-        {
-            mHandler = h;
-        }
-
-        @Override
-        public void run() {
-            //super.run();
-            byte status;
-            Message msg;
-            while (true) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        }
-    }
 
     class ReadThread extends Thread {
         final int USB_DATA_BUFFER = 8192;
@@ -271,20 +284,6 @@ public class MyActivity extends Activity {
                     Message msg = mHandler.obtainMessage(1);
                     mHandler.sendMessage(msg);
                 }
-                /*else if (readcount > 70) {
-                    if (readcount > USB_DATA_BUFFER) {
-                        readcount = USB_DATA_BUFFER;
-                    }
-                    ftDev.read(usbdata, readcount);
-
-                    for (int count = 0; count < readcount; count++)
-                    {
-                        readBuffer[iWriteIndex] = usbdata[count];
-                        iWriteIndex++;
-                        //iWriteIndex %= MAX_NUM_BYTES;
-                    }
-                    iWriteIndex = 0;
-                }*/
             }
         }
     }

@@ -13,6 +13,7 @@ public class Measurement {
     private double bmp180Temperature;
     private double bmp180Pressure;
     private double medianTemperature;
+    private long measuredTime;
 
     private boolean errorParsingNumbers;
 
@@ -24,6 +25,7 @@ public class Measurement {
         this.lm73Temperature = lm73Temperature;
         this.bmp180Temperature = bmp180Temperature;
         this.bmp180Pressure = bmp180Pressure;
+        this.measuredTime = System.currentTimeMillis();
     }
 
     /**
@@ -33,6 +35,9 @@ public class Measurement {
      */
     public Measurement(String[] parsedValues) throws NumberFormatException{
         errorParsingNumbers = false;
+
+        this.measuredTime = System.currentTimeMillis();
+
         if (NumberUtils.isNumber(parsedValues[0].trim())) {
             this.id = Integer.parseInt(parsedValues[0].trim());
         } else {
@@ -132,5 +137,9 @@ public class Measurement {
 
     public boolean isErrorParsingNumbers() {
         return errorParsingNumbers;
+    }
+
+    public long getMeasuredTime() {
+        return measuredTime;
     }
 }
