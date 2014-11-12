@@ -147,15 +147,6 @@ public class MyActivity extends Activity {
     };
 
     private void printMeasurement(Measurement m) {
-        /*TextView txt = (TextView) findViewById(R.id.txtRead);
-        txt.append("ID: " + m.getId() + "\n");
-        txt.append("SHT21 Temperature: " + m.getSht21Temperature() + "\n");
-        txt.append("SHT21 Humidity: " + m.getSht21Humidity() + "\n");
-        txt.append("LM73 Temperature: " + m.getLm73Temperature() + "\n");
-        txt.append("BMP180 Temperature: " + m.getBmp180Temperature() + "\n");
-        txt.append("BMP180 Pressure: " + m.getBmp180Pressure() + "\n");
-        txt.append(String.format("Median Temperature: %.2f \n", m.getMedianTemperature()));
-        txt.append("\n");*/
 
         if (m.getId() == 1) {
             TextView temp1 = (TextView) findViewById(R.id.txtTemperature1);
@@ -166,6 +157,26 @@ public class MyActivity extends Activity {
 
             TextView pressure1 = (TextView) findViewById(R.id.txtPressure1);
             pressure1.setText(String.format("%.2f", m.getBmp180Pressure()));
+        }
+        else if (m.getId() == 2) {
+            TextView temp2 = (TextView) findViewById(R.id.txtTemperature2);
+            temp2.setText(String.format("%.2f", m.getMedianTemperature()));
+
+            TextView humidity2 = (TextView) findViewById(R.id.txtHumidity2);
+            humidity2.setText(String.format("%.2f", m.getSht21Humidity()));
+
+            TextView pressure2 = (TextView) findViewById(R.id.txtPressure2);
+            pressure2.setText(String.format("%.2f", m.getBmp180Pressure()));
+        }
+        else if (m.getId() == 3) {
+            TextView temp3 = (TextView) findViewById(R.id.txtTemperature3);
+            temp3.setText(String.format("%.2f", m.getMedianTemperature()));
+
+            TextView humidity3 = (TextView) findViewById(R.id.txtHumidity3);
+            humidity3.setText(String.format("%.2f", m.getSht21Humidity()));
+
+            TextView pressure3 = (TextView) findViewById(R.id.txtPressure3);
+            pressure3.setText(String.format("%.2f", m.getBmp180Pressure()));
         }
     }
 
