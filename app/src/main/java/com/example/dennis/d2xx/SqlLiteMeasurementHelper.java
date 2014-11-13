@@ -59,7 +59,6 @@ public class SqlLiteMeasurementHelper extends SQLiteOpenHelper {
 
     public long countRows() {
         SQLiteDatabase db = this.getReadableDatabase();
-        long rows = DatabaseUtils.queryNumEntries(db ,"measurements");
-        return rows;
+        return DatabaseUtils.queryNumEntries(db ,"measurements");
     }
 }

@@ -31,6 +31,11 @@ public class MyActivity extends Activity {
     int bytesRead = 0;
     byte[] readBuffer;
 
+    ReadThread rt;
+    boolean stopThread = false;
+
+    boolean connectionOpened = false;
+
     SqlLiteMeasurementHelper dbMeasurements;
 
     @Override
@@ -38,45 +43,6 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        try {
-            ftD2xx = D2xxManager.getInstance(this);
-            devCount = ftD2xx.createDeviceInfoList(this);
-            readBuffer = new byte[8192];
-            if (devCount > 0) {
-                ftDev = ftD2xx.openByIndex(this, 0);
-
-
-                if (ftDev.isOpen()) {
-                    //TextView txt = (TextView) findViewById(R.id.txtRead);
-                    //txt.append("\nftDev is Open\n");
-
-                    ftDev.setBitMode((byte) 0, D2xxManager.FT_BITMODE_RESET);
-
-                    ftDev.setBaudRate(38400);
-
-                    ftDev.setDataCharacteristics(D2xxManager.FT_DATA_BITS_8, D2xxManager.FT_STOP_BITS_1,
-                            D2xxManager.FT_PARITY_NONE);
-
-                    final byte XON = 0x11;    /* Resume transmission */
-                    final byte XOFF = 0x13;
-
-                    ftDev.setFlowControl(D2xxManager.FT_FLOW_RTS_CTS, XON, XOFF);
-
-                    //txt.append("\nftDev configured\n");
-
-                    ReadThread rt = new ReadThread(handler);
-                    rt.start();
-
-                }
-                else {
-                    //TextView txt = (TextView) findViewById(R.id.txtRead);
-                    //txt.append("ftDev not Open");
-                }
-
-            }
-        } catch (D2xxManager.D2xxException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -95,6 +61,64 @@ public class MyActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if (id == R.id.action_start_stop_measure) {
+            if (!connectionOpened) {
+                try {
+                    ftD2xx = D2xxManager.getInstance(this);
+                    devCount = ftD2xx.createDeviceInfoList(this);
+                    readBuffer = new byte[8192];
+                    if (devCount > 0) {
+                        ftDev = ftD2xx.openByIndex(this, 0);
+
+
+                        if (ftDev.isOpen()) {
+
+                            //TextView txt = (TextView) findViewById(R.id.txtRead);
+                            //txt.append("\nftDev is Open\n");
+
+                            ftDev.setBitMode((byte) 0, D2xxManager.FT_BITMODE_RESET);
+
+                            ftDev.setBaudRate(38400);
+
+                            ftDev.setDataCharacteristics(D2xxManager.FT_DATA_BITS_8, D2xxManager.FT_STOP_BITS_1,
+                                    D2xxManager.FT_PARITY_NONE);
+
+                            final byte XON = 0x11;    //* Resume transmission *//*
+                            final byte XOFF = 0x13;
+
+                            ftDev.setFlowControl(D2xxManager.FT_FLOW_RTS_CTS, XON, XOFF);
+
+                            //txt.append("\nftDev configured\n");
+                            Toast.makeText(getApplicationContext(), "Connection openend", Toast.LENGTH_SHORT).show();
+                            connectionOpened = true;
+
+
+
+                            stopThread = false;
+                            rt = new ReadThread(handler);
+                            rt.start();
+                            return true;
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Error opening Connection", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "No Device Connected", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (D2xxManager.D2xxException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                ftDev.close();
+                stopThread = true;
+                Toast.makeText(getApplicationContext(), "Connection closed", Toast.LENGTH_SHORT).show();
+                connectionOpened = false;
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -255,9 +279,12 @@ public class MyActivity extends Activity {
             byte[] usbdata = new byte[USB_DATA_BUFFER];
             int readcount = 0;
             int iWriteIndex = 0;
-            boolean threadLoop = true;
 
-            while (threadLoop) {
+            // Clear data from driver buffer.
+            ftDev.purge(D2xxManager.FT_PURGE_RX);
+            ftDev.purge(D2xxManager.FT_PURGE_TX);
+
+            while (!stopThread) {
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
@@ -285,6 +312,8 @@ public class MyActivity extends Activity {
                     mHandler.sendMessage(msg);
                 }
             }
+
+
         }
     }
 
