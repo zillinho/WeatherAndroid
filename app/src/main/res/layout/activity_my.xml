@@ -40,15 +40,15 @@
             android:paddingLeft="25dp"
             android:text="@string/temperature"
             android:textSize="16sp"
+            android:gravity="center"
             android:layout_below="@+id/txtStation1"/>
         <TextView
             android:id="@+id/txtTemperature1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
+
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtTemperature1Label"
             android:layout_below="@+id/txtStation1"
@@ -68,19 +68,17 @@
             android:layout_below="@+id/txtTemperature1Label"/>
         <TextView
             android:id="@+id/txtHumidity1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtHumidity1Label"
             android:layout_toEndOf="@+id/txtHumidity1Label"
             android:layout_below="@+id/txtTemperature1"
             android:text="@string/value_not_available"
             android:textSize="16sp"
-            android:gravity="end"
+
             />
 
         <TextView
@@ -95,20 +93,16 @@
             android:layout_below="@+id/txtHumidity1Label"/>
         <TextView
             android:id="@+id/txtPressure1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtPressure1Label"
             android:layout_toEndOf="@+id/txtPressure1Label"
             android:layout_below="@+id/txtHumidity1"
             android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"
-            />
+            android:textSize="16sp"/>
         </RelativeLayout>
     <!-- Layout for values of the second weatherstation !-->
     <RelativeLayout
@@ -134,18 +128,15 @@
             android:layout_below="@+id/txtStation2"/>
         <TextView
             android:id="@+id/txtTemperature2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtTemperature2Label"
             android:layout_below="@+id/txtStation2"
             android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/txtHumidity2Label"
@@ -159,20 +150,16 @@
             android:layout_below="@+id/txtTemperature2Label"/>
         <TextView
             android:id="@+id/txtHumidity2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtHumidity2Label"
             android:layout_toEndOf="@+id/txtHumidity2Label"
             android:layout_below="@+id/txtTemperature2"
             android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"
-            />
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/txtPressure2Label"
@@ -186,20 +173,17 @@
             android:layout_below="@+id/txtHumidity2Label"/>
         <TextView
             android:id="@+id/txtPressure2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
+
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtPressure2Label"
             android:layout_toEndOf="@+id/txtPressure2Label"
             android:layout_below="@+id/txtHumidity2"
             android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"
-            />
+            android:textSize="16sp"/>
     </RelativeLayout>
 
     <!-- Layout for values of the third weatherstation !-->
@@ -226,18 +210,15 @@
             android:layout_below="@+id/txtStation3"/>
         <TextView
             android:id="@+id/txtTemperature3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtTemperature3Label"
             android:layout_below="@+id/txtStation3"
             android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/txtHumidity3Label"
@@ -251,20 +232,16 @@
             android:layout_below="@+id/txtTemperature3Label"/>
         <TextView
             android:id="@+id/txtHumidity3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtHumidity3Label"
             android:layout_toEndOf="@+id/txtHumidity3Label"
             android:layout_below="@+id/txtTemperature3"
             android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"
-            />
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/txtPressure3Label"
@@ -278,20 +255,16 @@
             android:layout_below="@+id/txtHumidity3Label"/>
         <TextView
             android:id="@+id/txtPressure3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
-            android:paddingRight="120dp"
-            android:paddingEnd="120dp"
             android:paddingTop="5dp"
             android:layout_toRightOf="@+id/txtPressure3Label"
             android:layout_toEndOf="@+id/txtPressure3Label"
             android:layout_below="@+id/txtHumidity3"
             android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"
-            />
+            android:textSize="16sp"/>
     </RelativeLayout>
 
 

@@ -89,15 +89,16 @@ public class MyActivity extends Activity {
 
                             ftDev.setFlowControl(D2xxManager.FT_FLOW_RTS_CTS, XON, XOFF);
 
-                            //txt.append("\nftDev configured\n");
+                            item.setIcon(R.drawable.ic_action_stop);
+                            item.setTitle(R.string.stop_measurement);
                             Toast.makeText(getApplicationContext(), "Connection openend", Toast.LENGTH_SHORT).show();
                             connectionOpened = true;
 
-
-
+                            // Start the listener Thread.
                             stopThread = false;
                             rt = new ReadThread(handler);
                             rt.start();
+
                             return true;
                         }
                         else {
@@ -117,6 +118,10 @@ public class MyActivity extends Activity {
                 stopThread = true;
                 Toast.makeText(getApplicationContext(), "Connection closed", Toast.LENGTH_SHORT).show();
                 connectionOpened = false;
+
+                item.setIcon(R.drawable.ic_action_play);
+                item.setTitle(R.string.start_measurement);
+
                 return true;
             }
         }
@@ -130,27 +135,6 @@ public class MyActivity extends Activity {
             switch (msg.what)
             {
                 case 1:
-                    //TextView txt = (TextView) findViewById(R.id.txtRead);
-                    //ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
-
-                    //////// Helligkeit regeln //////////////
-                    /*if (bytesRead == 8) {
-                        //char c = (char) readBuffer[2];
-                        try {
-                            String read = (new String(readBuffer, "UTF-8"));
-                            Pattern p = Pattern.compile("\\d+");
-                            Matcher m = p.matcher(read);
-                            while (m.find()) {
-                                int value = Integer.parseInt(m.group());
-                                txt.append(Integer.toString(value) + "\n");
-                                changeScreenBrightness(value);
-                            }
-                            //readBuffer = new byte[8192]
-
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
-                    }*/
                     if (bytesRead > 0) {
                         //txt.append(Integer.toString(bytesRead) + " Bytes read\n");
                         try {
@@ -241,26 +225,6 @@ public class MyActivity extends Activity {
         }
     }
 
-    private void changeScreenBrightness(int value) {
-        WindowManager.LayoutParams layout = getWindow().getAttributes();
-        if (value > 225)
-            layout.screenBrightness = 0F;
-        else if (value > 200)
-            layout.screenBrightness = 0.25F;
-        else if (value > 175)
-            layout.screenBrightness = 0.33F;
-        else if (value > 140)
-            layout.screenBrightness = 0.5F;
-        else if (value > 100)
-            layout.screenBrightness = 0.75F;
-        else if (value > 50)
-            layout.screenBrightness = 0.85F;
-        else
-            layout.screenBrightness = 1F;
-
-        getWindow().setAttributes(layout);
-
-    }
 
 
     class ReadThread extends Thread {

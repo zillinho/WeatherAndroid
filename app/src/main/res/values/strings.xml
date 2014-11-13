@@ -11,5 +11,7 @@
     <string name="pressure">Pressure:</string>
     <string name="station_2">Wetterstation 2</string>
     <string name="station_3">Wetterstation 3</string>
+    <string name="start_measurement">Start Measurements</string>
+    <string name="stop_measurement">Stop Measurements</string>
 
 </resources>
