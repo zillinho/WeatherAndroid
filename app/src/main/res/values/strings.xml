@@ -7,10 +7,10 @@
     <string name="temperature">Temperature: </string>
     <string name="value_not_available">n/a</string>
     <string name="humidity">Humidity:</string>
-    <string name="station_1">Wetterstation 1</string>
+    <string name="station_1">Station 1</string>
     <string name="pressure">Pressure:</string>
-    <string name="station_2">Wetterstation 2</string>
-    <string name="station_3">Wetterstation 3</string>
+    <string name="station_2">Station 2</string>
+    <string name="station_3">Station 3</string>
     <string name="start_measurement">Start Measurements</string>
     <string name="stop_measurement">Stop Measurements</string>
 

@@ -226,7 +226,9 @@ public class MyActivity extends Activity {
     }
 
 
-
+    /**
+     * This class listens to the Driver for incoming data.
+     */
     class ReadThread extends Thread {
         final int USB_DATA_BUFFER = 8192;
         Handler mHandler;

@@ -31,79 +31,109 @@
             android:layout_height="wrap_content"
             android:text="@string/station_1"
             android:textSize="20sp"
-            android:gravity="center"/>
-        <TextView
-            android:id="@+id/txtTemperature1Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingLeft="25dp"
-            android:text="@string/temperature"
-            android:textSize="16sp"
             android:gravity="center"
-            android:layout_below="@+id/txtStation1"/>
-        <TextView
-            android:id="@+id/txtTemperature1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"/>
 
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtTemperature1Label"
+        <LinearLayout
+            android:id="@+id/linearTemp1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/txtStation1"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"
-            android:gravity="end"/>
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/txtHumidity1Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:paddingTop="5dp"
-            android:layout_alignRight="@+id/txtTemperature1Label"
-            android:text="@string/humidity"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtTemperature1Label"/>
-        <TextView
-            android:id="@+id/txtHumidity1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtHumidity1Label"
-            android:layout_toEndOf="@+id/txtHumidity1Label"
-            android:layout_below="@+id/txtTemperature1"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"
+            <TextView
+                android:id="@+id/txtTemperature1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="@string/temperature"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"/>
 
-            />
+            <TextView
+                android:id="@+id/txtTemperature1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="25dp"
+                android:text="@string/value_not_available"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="16sp"
+                android:gravity="end" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtPressure1Label"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/linearHumid1"
+            android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingLeft="25dp"
-            android:layout_alignRight="@id/txtTemperature1Label"
-            android:text="@string/pressure"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtHumidity1Label"/>
-        <TextView
-            android:id="@+id/txtPressure1"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/linearTemp1"
+            >
+
+            <TextView
+                android:id="@+id/txtHumidity1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="@string/humidity"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="end"
+
+                android:layout_weight="0.5"
+                />
+
+            <TextView
+                android:id="@+id/txtHumidity1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/value_not_available"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="16sp"
+                android:layout_weight="0.5"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearPressure1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtPressure1Label"
-            android:layout_toEndOf="@+id/txtPressure1Label"
-            android:layout_below="@+id/txtHumidity1"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"/>
-        </RelativeLayout>
+            android:layout_below="@+id/linearHumid1"
+            >
+
+            <TextView
+                android:id="@+id/txtPressure1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="@string/pressure"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="end"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/txtPressure1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_weight="0.5"/>
+        </LinearLayout>
+
+    </RelativeLayout>
     <!-- Layout for values of the second weatherstation !-->
     <RelativeLayout
         android:layout_width="match_parent"
@@ -116,74 +146,105 @@
             android:layout_height="wrap_content"
             android:text="@string/station_2"
             android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
             android:gravity="center"/>
-        <TextView
-            android:id="@+id/txtTemperature2Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingLeft="25dp"
-            android:text="@string/temperature"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtStation2"/>
-        <TextView
-            android:id="@+id/txtTemperature2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtTemperature2Label"
-            android:layout_below="@+id/txtStation2"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"/>
 
-        <TextView
-            android:id="@+id/txtHumidity2Label"
-            android:layout_width="wrap_content"
+        <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:paddingTop="5dp"
-            android:layout_alignRight="@+id/txtTemperature2Label"
-            android:text="@string/humidity"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtTemperature2Label"/>
-        <TextView
-            android:id="@+id/txtHumidity2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtHumidity2Label"
-            android:layout_toEndOf="@+id/txtHumidity2Label"
-            android:layout_below="@+id/txtTemperature2"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"/>
+            android:orientation="horizontal"
+            android:id="@+id/linearTemp2"
+            android:layout_below="@+id/txtStation2">
 
-        <TextView
-            android:id="@+id/txtPressure2Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingLeft="25dp"
-            android:layout_alignRight="@+id/txtTemperature2Label"
-            android:text="@string/pressure"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtHumidity2Label"/>
-        <TextView
-            android:id="@+id/txtPressure2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
+            <TextView
+                android:id="@+id/txtTemperature2Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="@string/temperature"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_weight="0.5"
+                android:gravity="end"/>
 
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtPressure2Label"
-            android:layout_toEndOf="@+id/txtPressure2Label"
-            android:layout_below="@+id/txtHumidity2"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/txtTemperature2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="25dp"
+                android:layout_weight="0.5"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed" />
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearHumid2"
+            android:layout_below="@id/linearTemp2">
+
+            <TextView
+                android:id="@+id/txtHumidity2Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="@string/humidity"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_below="@+id/txtTemperature2Label" />
+
+            <TextView
+                android:id="@+id/txtHumidity2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed" />
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearPressure2"
+            android:layout_below="@id/linearHumid2">
+
+            <TextView
+                android:id="@+id/txtPressure2Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="@string/pressure"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_below="@+id/txtHumidity2Label" />
+
+            <TextView
+                android:id="@+id/txtPressure2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed" />
+        </LinearLayout>
+
     </RelativeLayout>
 
     <!-- Layout for values of the third weatherstation !-->
@@ -198,73 +259,103 @@
             android:layout_height="wrap_content"
             android:text="@string/station_3"
             android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
             android:gravity="center"/>
-        <TextView
-            android:id="@+id/txtTemperature3Label"
-            android:layout_width="wrap_content"
+
+        <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingLeft="25dp"
-            android:text="@string/temperature"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtStation3"/>
-        <TextView
-            android:id="@+id/txtTemperature3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtTemperature3Label"
+            android:id="@+id/linearTemp3"
             android:layout_below="@+id/txtStation3"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtHumidity3Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:paddingTop="5dp"
-            android:layout_alignRight="@id/txtTemperature3Label"
-            android:text="@string/humidity"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtTemperature3Label"/>
-        <TextView
-            android:id="@+id/txtHumidity3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtHumidity3Label"
-            android:layout_toEndOf="@+id/txtHumidity3Label"
-            android:layout_below="@+id/txtTemperature3"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/txtTemperature3Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="@string/temperature"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed" />
 
-        <TextView
-            android:id="@+id/txtPressure3Label"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtTemperature3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="25dp"
+                android:layout_weight="0.5"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed" />
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingLeft="25dp"
-            android:layout_alignRight="@id/txtTemperature3Label"
-            android:text="@string/pressure"
-            android:textSize="16sp"
-            android:layout_below="@+id/txtHumidity3Label"/>
-        <TextView
-            android:id="@+id/txtPressure3"
-            android:layout_width="wrap_content"
+            android:id="@+id/linearHumid3"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearTemp3">
+
+            <TextView
+                android:id="@+id/txtHumidity3Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:gravity="end"
+                android:text="@string/humidity"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/txtHumidity3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed" />
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_toRightOf="@+id/txtPressure3Label"
-            android:layout_toEndOf="@+id/txtPressure3Label"
-            android:layout_below="@+id/txtHumidity3"
-            android:text="@string/value_not_available"
-            android:textSize="16sp"/>
+            android:id="@+id/linearPressure3"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearHumid3">
+
+            <TextView
+                android:id="@+id/txtPressure3Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:gravity="end"
+                android:layout_weight="0.5"
+                android:text="@string/pressure"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"/>
+
+            <TextView
+                android:id="@+id/txtPressure3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed" />
+        </LinearLayout>
+
     </RelativeLayout>
 
 
