@@ -19,6 +19,8 @@ import com.ftdi.j2xx.FT_Device;
 import org.w3c.dom.Text;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -202,6 +204,9 @@ public class MyActivity extends Activity {
 
             TextView pressure1 = (TextView) findViewById(R.id.txtPressure1);
             pressure1.setText(String.format("%.2f", m.getBmp180Pressure()));
+
+            TextView updated1 = (TextView) findViewById(R.id.txtUpdated1);
+            updated1.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
         else if (m.getId() == 2) {
             TextView temp2 = (TextView) findViewById(R.id.txtTemperature2);
@@ -212,6 +217,9 @@ public class MyActivity extends Activity {
 
             TextView pressure2 = (TextView) findViewById(R.id.txtPressure2);
             pressure2.setText(String.format("%.2f", m.getBmp180Pressure()));
+
+            TextView updated2 = (TextView) findViewById(R.id.txtUpdated1);
+            updated2.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
         else if (m.getId() == 3) {
             TextView temp3 = (TextView) findViewById(R.id.txtTemperature3);
@@ -222,9 +230,21 @@ public class MyActivity extends Activity {
 
             TextView pressure3 = (TextView) findViewById(R.id.txtPressure3);
             pressure3.setText(String.format("%.2f", m.getBmp180Pressure()));
+
+            TextView updated3 = (TextView) findViewById(R.id.txtUpdated1);
+            updated3.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
     }
 
+    private String convertUnixTimeToString(long unixTime) {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTimeInMillis(unixTime);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+        //return hour + ":" + minute + ":" + second;
+        return  String.format("%02d:%02d:%02d", hour, minute, second);
+    }
 
     /**
      * This class listens to the Driver for incoming data.

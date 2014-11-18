@@ -48,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="20dp"
                 android:text="@string/temperature"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"
@@ -55,16 +56,14 @@
 
             <TextView
                 android:id="@+id/txtTemperature1"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
                 android:paddingTop="5dp"
-                android:paddingRight="20dp"
                 android:text="@string/value_not_available"
                 android:fontFamily="sans-serif-condensed"
-                android:textSize="16sp"
-                android:gravity="end" />
+                android:textSize="16sp"/>
         </LinearLayout>
 
 
@@ -81,13 +80,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="40dp"
                 android:text="@string/humidity"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"/>
 
             <TextView
                 android:id="@+id/txtHumidity1"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -110,13 +110,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="40dp"
                 android:text="@string/pressure"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"/>
 
             <TextView
                 android:id="@+id/txtPressure1"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -139,13 +140,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="40dp"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/updated"/>
 
             <TextView
                 android:id="@+id/txtUpdated1"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -185,13 +187,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="20dp"
                 android:text="@string/temperature"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"/>
 
             <TextView
                 android:id="@+id/txtTemperature2"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -215,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-
+                android:layout_marginLeft="40dp"
                 android:text="@string/humidity"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"
@@ -223,7 +226,7 @@
 
             <TextView
                 android:id="@+id/txtHumidity2"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -238,15 +241,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/linearPressure2"
-            android:layout_below="@id/linearHumid2">
+            android:layout_below="@id/linearHumid2"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/txtPressure2Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:layout_weight="0.5"
-                android:gravity="end"
+                android:layout_marginLeft="40dp"
                 android:text="@string/pressure"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"
@@ -254,12 +257,11 @@
 
             <TextView
                 android:id="@+id/txtPressure2"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
                 android:paddingTop="5dp"
-                android:layout_weight="0.5"
                 android:text="@string/value_not_available"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed" />
@@ -278,13 +280,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="40dp"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/updated"/>
 
             <TextView
                 android:id="@+id/txtUpdated2"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -324,13 +327,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="20dp"
                 android:text="@string/temperature"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed" />
 
             <TextView
                 android:id="@+id/txtTemperature3"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -354,13 +358,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="40dp"
                 android:text="@string/humidity"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"/>
 
             <TextView
                 android:id="@+id/txtHumidity3"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -383,13 +388,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:layout_marginLeft="40dp"
                 android:text="@string/pressure"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-condensed"/>
 
             <TextView
                 android:id="@+id/txtPressure3"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -413,12 +419,13 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
                 android:textSize="16sp"
+                android:layout_marginLeft="40dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/updated"/>
 
             <TextView
                 android:id="@+id/txtUpdated3"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
