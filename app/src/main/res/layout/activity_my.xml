@@ -23,7 +23,8 @@
     <!-- Layout for values of the first weatherstation !-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="0.33">
 
         <TextView
             android:id="@+id/txtStation1"
@@ -125,12 +126,42 @@
                 android:fontFamily="sans-serif-condensed"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linearUpdated1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearPressure1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtUpdated1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/updated"/>
+
+            <TextView
+                android:id="@+id/txtUpdated1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"/>
+            </LinearLayout>
+
     </RelativeLayout>
     <!-- Layout for values of the second weatherstation !-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp">
+        android:paddingTop="1dp"
+        android:layout_weight="0.33">
 
         <TextView
             android:id="@+id/txtStation2"
@@ -234,13 +265,42 @@
                 android:fontFamily="sans-serif-condensed" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linearUpdated2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearPressure2"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtUpdated2Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/updated"/>
+
+            <TextView
+                android:id="@+id/txtUpdated2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <!-- Layout for values of the third weatherstation !-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp">
+        android:paddingTop="1dp"
+        android:layout_weight="0.33">
 
         <TextView
             android:id="@+id/txtStation3"
@@ -339,6 +399,34 @@
                 android:fontFamily="sans-serif-condensed" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linearUpdated3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearPressure3"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtUpdated3Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/updated"/>
+
+            <TextView
+                android:id="@+id/txtUpdated3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/value_not_available"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"/>
+        </LinearLayout>
     </RelativeLayout>
 
 

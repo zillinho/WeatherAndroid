@@ -13,5 +13,6 @@
     <string name="station_3">Station 3</string>
     <string name="start_measurement">Start Measurements</string>
     <string name="stop_measurement">Stop Measurements</string>
+    <string name="updated">Updated:</string>
 
 </resources>
