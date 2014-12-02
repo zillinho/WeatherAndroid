@@ -61,10 +61,7 @@ public class MyActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        else if (id == R.id.action_start_stop_measure) {
+        if (id == R.id.action_start_stop_measure) {
             if (!connectionOpened) {
                 try {
                     ftD2xx = D2xxManager.getInstance(this);
@@ -197,45 +194,50 @@ public class MyActivity extends Activity {
 
         if (m.getId() == 1) {
             TextView temp1 = (TextView) findViewById(R.id.txtTemperature1);
-            temp1.setText(String.format("%.2f", m.getMedianTemperature()));
+            temp1.setText(String.format("%.2f°C", m.getMedianTemperature()));
 
             TextView humidity1 = (TextView) findViewById(R.id.txtHumidity1);
-            humidity1.setText(String.format("%.2f", m.getSht21Humidity()));
+            humidity1.setText(String.format("%.2f%%", m.getSht21Humidity()));
 
             TextView pressure1 = (TextView) findViewById(R.id.txtPressure1);
-            pressure1.setText(String.format("%.2f", m.getBmp180Pressure()));
+            pressure1.setText(String.format("%.2f hPa", m.getBmp180Pressure()));
 
             TextView updated1 = (TextView) findViewById(R.id.txtUpdated1);
             updated1.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
         else if (m.getId() == 2) {
             TextView temp2 = (TextView) findViewById(R.id.txtTemperature2);
-            temp2.setText(String.format("%.2f", m.getMedianTemperature()));
+            temp2.setText(String.format("%.2f°C", m.getMedianTemperature()));
 
             TextView humidity2 = (TextView) findViewById(R.id.txtHumidity2);
-            humidity2.setText(String.format("%.2f", m.getSht21Humidity()));
+            humidity2.setText(String.format("%.2f%%", m.getSht21Humidity()));
 
             TextView pressure2 = (TextView) findViewById(R.id.txtPressure2);
-            pressure2.setText(String.format("%.2f", m.getBmp180Pressure()));
+            pressure2.setText(String.format("%.2f hPa", m.getBmp180Pressure()));
 
             TextView updated2 = (TextView) findViewById(R.id.txtUpdated1);
             updated2.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
         else if (m.getId() == 3) {
             TextView temp3 = (TextView) findViewById(R.id.txtTemperature3);
-            temp3.setText(String.format("%.2f", m.getMedianTemperature()));
+            temp3.setText(String.format("%.2f°C", m.getMedianTemperature()));
 
             TextView humidity3 = (TextView) findViewById(R.id.txtHumidity3);
-            humidity3.setText(String.format("%.2f", m.getSht21Humidity()));
+            humidity3.setText(String.format("%.2f%%", m.getSht21Humidity()));
 
             TextView pressure3 = (TextView) findViewById(R.id.txtPressure3);
-            pressure3.setText(String.format("%.2f", m.getBmp180Pressure()));
+            pressure3.setText(String.format("%.2f hPa", m.getBmp180Pressure()));
 
             TextView updated3 = (TextView) findViewById(R.id.txtUpdated1);
             updated3.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
     }
 
+    /**
+     * Converts the Unixtime (Milliseconds) into Time.
+     * @param unixTime
+     * @return Returns time in this Format: hh:mm:ss
+     */
     private String convertUnixTimeToString(long unixTime) {
         Calendar calendar = new GregorianCalendar();
         calendar.setTimeInMillis(unixTime);

@@ -6,6 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FCFCFC"
     android:orientation="vertical"
     tools:context=".MyActivity">
 
@@ -56,7 +57,7 @@
 
             <TextView
                 android:id="@+id/txtTemperature1"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -87,7 +88,7 @@
 
             <TextView
                 android:id="@+id/txtHumidity1"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -117,7 +118,7 @@
 
             <TextView
                 android:id="@+id/txtPressure1"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -147,7 +148,7 @@
 
             <TextView
                 android:id="@+id/txtUpdated1"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -194,7 +195,7 @@
 
             <TextView
                 android:id="@+id/txtTemperature2"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -226,7 +227,7 @@
 
             <TextView
                 android:id="@+id/txtHumidity2"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -257,7 +258,7 @@
 
             <TextView
                 android:id="@+id/txtPressure2"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -287,7 +288,7 @@
 
             <TextView
                 android:id="@+id/txtUpdated2"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -334,7 +335,7 @@
 
             <TextView
                 android:id="@+id/txtTemperature3"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -365,7 +366,7 @@
 
             <TextView
                 android:id="@+id/txtHumidity3"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -395,7 +396,7 @@
 
             <TextView
                 android:id="@+id/txtPressure3"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
@@ -425,7 +426,7 @@
 
             <TextView
                 android:id="@+id/txtUpdated3"
-                android:layout_width="65dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
