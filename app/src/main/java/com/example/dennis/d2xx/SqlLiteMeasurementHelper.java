@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by Dennis on 12.11.2014.
+ * Helper class which enables Database interaction
  */
 public class SqlLiteMeasurementHelper extends SQLiteOpenHelper {
 
@@ -57,6 +58,10 @@ public class SqlLiteMeasurementHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * Get number of rows in Database
+     * @return
+     */
     public long countRows() {
         SQLiteDatabase db = this.getReadableDatabase();
         return DatabaseUtils.queryNumEntries(db ,"measurements");

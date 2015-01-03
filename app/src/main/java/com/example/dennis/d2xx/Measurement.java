@@ -4,6 +4,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 /**
  * Created by Dennis on 01.11.2014.
+ * POJO which represents a Measurement sent from WSN
  */
 public class Measurement {
     private int id;

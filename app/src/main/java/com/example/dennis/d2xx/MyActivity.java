@@ -24,7 +24,9 @@ import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * Main Activity of App
+ */
 public class MyActivity extends Activity {
 
     FT_Device ftDev = null;
@@ -61,7 +63,11 @@ public class MyActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        // Start/Stop Button pressed
         if (id == R.id.action_start_stop_measure) {
+
+            //If conneciton closed, try opening connection
             if (!connectionOpened) {
                 try {
                     ftD2xx = D2xxManager.getInstance(this);
@@ -70,11 +76,8 @@ public class MyActivity extends Activity {
                     if (devCount > 0) {
                         ftDev = ftD2xx.openByIndex(this, 0);
 
-
+                        // Configure inteface
                         if (ftDev.isOpen()) {
-
-                            //TextView txt = (TextView) findViewById(R.id.txtRead);
-                            //txt.append("\nftDev is Open\n");
 
                             ftDev.setBitMode((byte) 0, D2xxManager.FT_BITMODE_RESET);
 
@@ -112,6 +115,8 @@ public class MyActivity extends Activity {
                     e.printStackTrace();
                 }
             }
+
+            // If connection already opened, close connection
             else {
                 ftDev.close();
                 stopThread = true;
@@ -127,22 +132,21 @@ public class MyActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Handler which enables communication between main-Thread and ReadThread
+     */
     final Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             //super.handleMessage(msg);
             switch (msg.what)
             {
+                // Message is beeing send when ReadThread reads a Datapackage
                 case 1:
                     if (bytesRead > 0) {
-                        //txt.append(Integer.toString(bytesRead) + " Bytes read\n");
                         try {
                             String receivedBytes = new String(readBuffer);
                             String[] parsedValues = receivedBytes.split(";");
-                            //txt.append(parsedValues[3] + " LEngth: " + parsedValues[3].length() + " Length Trimmed:" + parsedValues[3].trim().length() + "\n");
-                            //int v = Integer.parseInt(parsedValues[0].trim());
-                            //txt.append(parsedValues[3].trim() +  "." + parsedValues[4].trim() + "\n");
-                            //double lm73 = Double.parseDouble(parsedValues[3].trim() + "." + parsedValues[4].trim());
 
                             Measurement m = new Measurement(parsedValues);
                             if (!m.isErrorParsingNumbers()) {
@@ -150,9 +154,6 @@ public class MyActivity extends Activity {
                                 InsertMeasurement im = new InsertMeasurement(m);
                                 im.execute();
                             }
-
-                            //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
-
                         } finally {
                             readBuffer = new byte[8192];
                         }
@@ -182,6 +183,7 @@ public class MyActivity extends Activity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            //TODO Remove Toast which displays number of rows in DB
             Toast.makeText(getApplicationContext(), Long.toString(rows), Toast.LENGTH_SHORT).show();
         }
     }
@@ -215,7 +217,7 @@ public class MyActivity extends Activity {
             TextView pressure2 = (TextView) findViewById(R.id.txtPressure2);
             pressure2.setText(String.format("%.2f hPa", m.getBmp180Pressure()));
 
-            TextView updated2 = (TextView) findViewById(R.id.txtUpdated1);
+            TextView updated2 = (TextView) findViewById(R.id.txtUpdated2);
             updated2.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
         else if (m.getId() == 3) {
@@ -228,14 +230,14 @@ public class MyActivity extends Activity {
             TextView pressure3 = (TextView) findViewById(R.id.txtPressure3);
             pressure3.setText(String.format("%.2f hPa", m.getBmp180Pressure()));
 
-            TextView updated3 = (TextView) findViewById(R.id.txtUpdated1);
+            TextView updated3 = (TextView) findViewById(R.id.txtUpdated3);
             updated3.setText(convertUnixTimeToString(m.getMeasuredTime()));
         }
     }
 
     /**
      * Converts the Unixtime (Milliseconds) into Time.
-     * @param unixTime
+     * @param unixTime The time value in Unix Time
      * @return Returns time in this Format: hh:mm:ss
      */
     private String convertUnixTimeToString(long unixTime) {
@@ -272,18 +274,21 @@ public class MyActivity extends Activity {
             ftDev.purge(D2xxManager.FT_PURGE_RX);
             ftDev.purge(D2xxManager.FT_PURGE_TX);
 
+            // Let Thread Sleep for 10 ms
             while (!stopThread) {
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
+                // Check if Data is available to read from interface
                 readcount = ftDev.getQueueStatus();
                 bytesRead = readcount;
+
+                // If size of incoming Data > 63 Bytes then a comlete package was send.
+                // 63 Bytes size of one Datapackage
                 if (readcount > 63 ) {
-                    //TextView txt = (TextView) findViewById(R.id.txtRead);
-                    //txt.append(Integer.toString(readcount));
                     if (readcount > USB_DATA_BUFFER) {
                         readcount = USB_DATA_BUFFER;
                     }
@@ -296,6 +301,8 @@ public class MyActivity extends Activity {
                         //iWriteIndex %= MAX_NUM_BYTES;
                     }
                     iWriteIndex = 0;
+
+                    // Send message to main Thread
                     Message msg = mHandler.obtainMessage(1);
                     mHandler.sendMessage(msg);
                 }
