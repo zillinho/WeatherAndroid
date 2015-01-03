@@ -6,7 +6,7 @@ import org.apache.commons.lang3.math.NumberUtils;
  * Created by Dennis on 01.11.2014.
  * POJO which represents a Measurement sent from WSN
  */
-public class Measurement {
+class Measurement {
     private int id;
     private double sht21Temperature;
     private double sht21Humidity;
@@ -14,7 +14,7 @@ public class Measurement {
     private double bmp180Temperature;
     private double bmp180Pressure;
     private double medianTemperature;
-    private long measuredTime;
+    private final long measuredTime;
 
     private boolean errorParsingNumbers;
 
@@ -31,7 +31,7 @@ public class Measurement {
 
     /**
      *
-     * @param parsedValues
+     * @param parsedValues String array of all the parsed Values
      * @throws NumberFormatException
      */
     public Measurement(String[] parsedValues) throws NumberFormatException{

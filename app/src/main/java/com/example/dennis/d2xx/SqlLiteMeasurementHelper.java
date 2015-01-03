@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Dennis on 12.11.2014.
  * Helper class which enables Database interaction
  */
-public class SqlLiteMeasurementHelper extends SQLiteOpenHelper {
+class SqlLiteMeasurementHelper extends SQLiteOpenHelper {
 
     private static  final String DATABASE_NAME = "measurements";
     private static final int DATABASE_VERSION = 1;
@@ -60,7 +60,7 @@ public class SqlLiteMeasurementHelper extends SQLiteOpenHelper {
 
     /**
      * Get number of rows in Database
-     * @return
+     * @return Number of rows in DB
      */
     public long countRows() {
         SQLiteDatabase db = this.getReadableDatabase();

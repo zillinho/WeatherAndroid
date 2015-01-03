@@ -1,46 +1,39 @@
 package com.example.dennis.d2xx;
 
 import android.app.Activity;
-import android.database.DatabaseUtils;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.WindowManager;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ftdi.j2xx.D2xxManager;
 import com.ftdi.j2xx.FT_Device;
 
-import org.w3c.dom.Text;
-
-import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /**
  * Main Activity of App
  */
 public class MyActivity extends Activity {
 
-    FT_Device ftDev = null;
-    D2xxManager ftD2xx = null;
-    int devCount = 0;
-    int bytesRead = 0;
-    byte[] readBuffer;
+    private FT_Device ftDev = null;
+    private D2xxManager ftD2xx = null;
+    private int devCount = 0;
+    private int bytesRead = 0;
+    private byte[] readBuffer;
 
-    ReadThread rt;
-    boolean stopThread = false;
+    private ReadThread rt;
+    private boolean stopThread = false;
 
-    boolean connectionOpened = false;
+    private boolean connectionOpened = false;
 
-    SqlLiteMeasurementHelper dbMeasurements;
+    private SqlLiteMeasurementHelper dbMeasurements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +128,7 @@ public class MyActivity extends Activity {
     /**
      * Handler which enables communication between main-Thread and ReadThread
      */
-    final Handler handler = new Handler() {
+    private final Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             //super.handleMessage(msg);
@@ -267,7 +260,7 @@ public class MyActivity extends Activity {
             //super.run();
 
             byte[] usbdata = new byte[USB_DATA_BUFFER];
-            int readcount = 0;
+            int readcount;
             int iWriteIndex = 0;
 
             // Clear data from driver buffer.
